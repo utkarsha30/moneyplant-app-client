@@ -1,23 +1,19 @@
-<div class="container my-4" *ngFor="let expert of experts">
-  <mat-card>
-    <!-- <mat-card-header>
-      <mat-card-title>Actions Buttons</mat-card-title>
-      <mat-card-subtitle>Start</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions> -->
-
+<div
+  class="container my-5 d-flex justify-content-center"
+  *ngFor="let expert of experts"
+>
+  <mat-card class="w-75">
     <div class="container text-left">
       <div class="row align-items-start">
-        <div class="col">
+        <div class="col text-center">
           <img
-            [src]="
-              'https://res.cloudinary.com/debvb6ifr/image/upload/v1680182714/TaskManagementProfilePics/profilepic_akjf1e.jpg'
-            "
+            [src]="expert.profilepic"
             alt="image"
+            width="40%"
+            height="40%"
+            class="mt-2"
           />
+          <label class="block m-2 p-2 label-css">{{ expert.bio }}</label>
         </div>
         <div class="col">
           <mat-card-header>
@@ -39,6 +35,14 @@
         <div class="col">
           <mat-card-content>
             <p>Fee : {{ expert.fee }}$ / hr</p>
+            <br />
+            <button
+              (click)="connectNow(expert._id)"
+              type="button"
+              class="btn connect-now-btn"
+            >
+              Connect Now
+            </button>
           </mat-card-content>
         </div>
       </div>

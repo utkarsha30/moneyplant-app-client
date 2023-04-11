@@ -1,3 +1,16 @@
 .text-sizing {
   font-size: 1.4em;
 }
+img {
+  border-radius: 50%;
+}
+.label-css {
+  border: solid 1px rgb(105, 177, 48);
+  border-radius: 5px;
+  color: rgb(105, 177, 48);
+}
+.connect-now-btn {
+  background-color: rgb(0, 50, 85);
+  width: 60%;
+  color: white;
+}

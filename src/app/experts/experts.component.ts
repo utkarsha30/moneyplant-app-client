@@ -10,6 +10,7 @@ import { ExpertService } from '../services/expert.service';
 export class ExpertsComponent implements OnInit {
   experts: ExpertData[] = []; // declare experts as an array of ExpertData
   constructor(private expertService: ExpertService) {}
+  //session.remove
   ngOnInit() {
     this.expertService.getAllExpertsData().subscribe((experts) => {
       this.experts = experts;

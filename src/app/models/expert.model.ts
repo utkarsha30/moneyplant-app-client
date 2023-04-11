@@ -1,4 +1,5 @@
 export interface ExpertData {
+  _id: string;
   name: string;
   email: string;
   rating: {
@@ -18,12 +19,4 @@ export interface ExpertData {
   profilepic: string;
   bio: string;
   state: string;
-  peopleContacting: [
-    {
-      name: string;
-      mobileNo: string;
-      emailId: string;
-      message: string;
-    }
-  ];
 }

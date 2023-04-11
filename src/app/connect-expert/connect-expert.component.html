@@ -1,0 +1,37 @@
+<mat-card class="container my-5">
+  <mat-card-header>
+    <mat-card-title>Connect with an expert</mat-card-title>
+  </mat-card-header>
+  <mat-card-content> </mat-card-content>
+  <!-- <form class="example-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Ex. Pizza" formControlName="name" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="email" formControlName="email" />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Mobile No</mat-label>
+      <input matInput placeholder="mobile no" formControlName="mobileNo" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Message</mat-label>
+      <textarea
+        matInput
+        placeholder="Ex. It makes me feel..."
+        formControlName="message"
+      ></textarea>
+    </mat-form-field>
+    <button type="button" class="btn btn-color">Submit</button>
+  </form> -->
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <input type="text" placeholder="name" formControlName="name" />
+    <input type="text" placeholder="email" formControlName="emailId" />
+    <input type="text" placeholder="mobile no" formControlName="mobileNo" />
+    <input type="text" placeholder="message" formControlName="message" />
+    <button type="submit" class="btn btn-color">Submit</button>
+  </form>
+</mat-card>
