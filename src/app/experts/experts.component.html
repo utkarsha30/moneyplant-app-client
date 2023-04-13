@@ -1,3 +1,40 @@
 <app-navbar></app-navbar>
+<form class="container my-5 w-50" [formGroup]="search" (ngSubmit)="onSubmit()">
+  <div class="input-group">
+    <span class="input-group-text"
+      ><fa-icon [icon]="faLocationDot"></fa-icon
+    ></span>
+
+    <!-- <input
+      type="text"
+      class="form-control"
+      placeholder="location"
+      aria-label="Username"
+    /> -->
+
+    <mat-select
+      name="locations"
+      class="form-control"
+      formControlName="location"
+    >
+      <mat-option *ngFor="let location of locations" [value]="location">
+        {{ location.city }},{{ location.state }}
+      </mat-option>
+    </mat-select>
+
+    <span class="input-group-text"
+      ><fa-icon [icon]="faMagnifyingGlass"></fa-icon
+    ></span>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Specialization"
+      aria-label="Server"
+      formControlName="specialization"
+    />
+    <!-- <button class="btn btn-outline-secondary" type="submit">Button</button> -->
+    <button type="submit" class="btn btn-color">Submit</button>
+  </div>
+</form>
+
 <app-expert-card [experts]="experts"></app-expert-card>
-<!-- <app-connect-expert></app-connect-expert> -->

@@ -4,13 +4,9 @@ export interface ExpertData {
   email: string;
   rating: {
     totalRating: number;
-
     totalReviews: number;
   };
-  location: {
-    city: string;
-    state: string;
-  };
+
   experience: number;
   specialization: string;
   university: string;

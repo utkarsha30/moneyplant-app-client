@@ -11,3 +11,15 @@
   background-color: rgb(105, 177, 48);
   color: white;
 }
+.header-color {
+  color: rgb(0, 50, 85);
+}
+.label-color {
+  color: rgb(48, 130, 152);
+}
+.form-control {
+  border-radius: 25px;
+}
+.btn {
+  border-radius: 0;
+}

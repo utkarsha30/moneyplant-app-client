@@ -12,6 +12,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConnectExpertComponent } from './connect-expert/connect-expert.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatSelectModule } from '@angular/material/select';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +34,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     ReactiveFormsModule,
     MatDialogModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule,
+    FontAwesomeModule,
+    MatSelectModule,
   ],
   providers: [],
-  bootstrap: [AppComponent, NavbarComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

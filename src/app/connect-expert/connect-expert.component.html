@@ -1,37 +1,109 @@
-<mat-card class="container my-5">
-  <mat-card-header>
-    <mat-card-title>Connect with an expert</mat-card-title>
+<mat-card class="p-4">
+  <mat-card-header *ngIf="!update">
+    <mat-card-title class="header-color">Connect With An Expert</mat-card-title>
   </mat-card-header>
-  <mat-card-content> </mat-card-content>
-  <!-- <form class="example-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-    <mat-form-field class="example-full-width">
-      <mat-label>Name</mat-label>
-      <input matInput placeholder="Ex. Pizza" formControlName="name" />
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Email</mat-label>
-      <input matInput placeholder="email" formControlName="email" />
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-      <mat-label>Mobile No</mat-label>
-      <input matInput placeholder="mobile no" formControlName="mobileNo" />
-    </mat-form-field>
+  <mat-card-content *ngIf="!update">
+    <!-- <form
+      class="example-form"
+      [formGroup]="contactForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field class="example-full-width">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Enter your name" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          placeholder="Enter your email"
+          formControlName="emailId"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Mobile No</mat-label>
+        <input
+          matInput
+          placeholder="Enter your mobile no"
+          formControlName="mobileNo"
+        />
+      </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Message</mat-label>
-      <textarea
-        matInput
-        placeholder="Ex. It makes me feel..."
-        formControlName="message"
-      ></textarea>
-    </mat-form-field>
-    <button type="button" class="btn btn-color">Submit</button>
-  </form> -->
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-    <input type="text" placeholder="name" formControlName="name" />
-    <input type="text" placeholder="email" formControlName="emailId" />
-    <input type="text" placeholder="mobile no" formControlName="mobileNo" />
-    <input type="text" placeholder="message" formControlName="message" />
-    <button type="submit" class="btn btn-color">Submit</button>
-  </form>
+      <mat-form-field class="example-full-width">
+        <mat-label>Message</mat-label>
+        <textarea
+          matInput
+          placeholder="Enter message you want to send .."
+          formControlName="message"
+        ></textarea>
+      </mat-form-field>
+      <button type="submit" class="btn btn-color">Submit</button>
+    </form> -->
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="container">
+      <div class="mb-3 row">
+        <label for="name" class="form-label label-color">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Enter your name"
+          formControlName="name"
+        />
+      </div>
+      <div class="mb-3 row">
+        <div class="col">
+          <label for="mobileNo" class="form-label label-color">Mobile No</label>
+          <input
+            type="text"
+            class="form-control"
+            id="mobileNo"
+            placeholder="Enter your mobile no"
+            formControlName="mobileNo"
+          />
+        </div>
+        <div class="col">
+          <label for="emailId" class="form-label label-color">Email Id</label>
+          <input
+            type="text"
+            id="emailId"
+            class="form-control"
+            placeholder="Enter your Email Id"
+            formControlName="emailId"
+          />
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="message" class="form-label label-color">Message</label>
+        <textarea
+          class="form-control"
+          id="message"
+          rows="3"
+          placeholder="Enter your message for the expert"
+          formControlName="message"
+        ></textarea>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="gridCheck" />
+        <label class="form-check-label" for="gridCheck">
+          <span class="text-secondary"
+            >Receive relavent offers and promotional communication from Money
+            Plant</span
+          ><br />
+          <small class="text-muted"
+            >I agree to Money Controls terms of use</small
+          ></label
+        >
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-color">Submit</button>
+      </div>
+      <!-- <input type="text" placeholder="name" formControlName="name" />
+      <input type="text" placeholder="email" formControlName="emailId" />
+      <input type="text" placeholder="mobile no" formControlName="mobileNo" />
+      <input type="text" placeholder="message" formControlName="message" />
+     -->
+    </form>
+  </mat-card-content>
+  <div *ngIf="update">Congratulations</div>
+  <!-- </div> -->
 </mat-card>
