@@ -8,12 +8,14 @@ import {
   faMagnifyingGlass,
   faMapMarkerAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs/internal/Observable';
 @Component({
   selector: 'app-experts',
   templateUrl: './experts.component.html',
   styleUrls: ['./experts.component.css'],
 })
 export class ExpertsComponent implements OnInit {
+  suggestions?: ExpertData['specialization'][];
   locations: LocationData[] = [];
   location!: LocationData;
   faLocationDot = faLocationDot;
@@ -27,24 +29,20 @@ export class ExpertsComponent implements OnInit {
   ngOnInit() {
     this.expertService.getAllExpertsData().subscribe((experts) => {
       this.experts = experts;
-      console.log(this.experts);
     });
     this.expertService.getAllLocations().subscribe((locations) => {
       this.locations = locations;
-      console.log(this.locations);
     });
     this.search = new FormGroup({
       location: new FormControl(this.location),
       specialization: new FormControl(this.expert?.specialization),
     });
-    this.expertService.getAllSpecializations().subscribe((specialization) => {
-      console.log(specialization);
+    this.expertService.getAllSpecializations().subscribe((suggestions) => {
+      this.suggestions = suggestions;
     });
   }
   onSubmit() {
-    console.log('demo');
-    console.log(this.search);
-    console.log(this.search.controls['location'].value.city);
+    console.log(this.search.controls['location'].value);
     this.expertService
       .filterExperts(
         this.search.controls['location'].value.city,

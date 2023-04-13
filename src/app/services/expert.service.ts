@@ -23,8 +23,8 @@ export class ExpertService {
       environment.BASE_URL + '/api/expert/locations'
     );
   }
-  getAllSpecializations(): Observable<ExpertData['specialization']> {
-    return this.http.get<ExpertData['specialization']>(
+  getAllSpecializations(): Observable<ExpertData['specialization'][]> {
+    return this.http.get<ExpertData['specialization'][]>(
       environment.BASE_URL + '/api/expert/specializations'
     );
   }
@@ -33,11 +33,24 @@ export class ExpertService {
     state: string,
     specialization: string
   ): Observable<ExpertData[]> {
-    let params = new HttpParams()
-      .set('action', 'filter')
-      .set('city', city)
-      .set('state', state)
-      .set('specialization', specialization);
+    let params;
+    if (!city || !state) {
+      console.log('in city loop');
+      params = new HttpParams()
+        .set('action', 'filter')
+        .set('specialization', specialization);
+    } else if (!specialization) {
+      params = new HttpParams()
+        .set('action', 'filter')
+        .set('city', city)
+        .set('state', state);
+    } else {
+      params = new HttpParams()
+        .set('action', 'filter')
+        .set('city', city)
+        .set('state', state)
+        .set('specialization', specialization);
+    }
 
     return this.http.get<ExpertData[]>(environment.BASE_URL + '/api/expert/', {
       params,

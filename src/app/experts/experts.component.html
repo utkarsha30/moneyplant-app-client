@@ -32,7 +32,14 @@
       placeholder="Specialization"
       aria-label="Server"
       formControlName="specialization"
+      matInput
+      [matAutocomplete]="auto"
     />
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let suggestion of suggestions" [value]="suggestion">
+        {{ suggestion }}
+      </mat-option>
+    </mat-autocomplete>
     <!-- <button class="btn btn-outline-secondary" type="submit">Button</button> -->
     <button type="submit" class="btn btn-color">Submit</button>
   </div>
