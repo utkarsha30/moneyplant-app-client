@@ -23,4 +23,24 @@ export class ExpertService {
       environment.BASE_URL + '/api/expert/locations'
     );
   }
+  getAllSpecializations(): Observable<ExpertData['specialization']> {
+    return this.http.get<ExpertData['specialization']>(
+      environment.BASE_URL + '/api/expert/specializations'
+    );
+  }
+  filterExperts(
+    city: string,
+    state: string,
+    specialization: string
+  ): Observable<ExpertData[]> {
+    let params = new HttpParams()
+      .set('action', 'filter')
+      .set('city', city)
+      .set('state', state)
+      .set('specialization', specialization);
+
+    return this.http.get<ExpertData[]>(environment.BASE_URL + '/api/expert/', {
+      params,
+    });
+  }
 }

@@ -37,10 +37,22 @@ export class ExpertsComponent implements OnInit {
       location: new FormControl(this.location),
       specialization: new FormControl(this.expert?.specialization),
     });
+    this.expertService.getAllSpecializations().subscribe((specialization) => {
+      console.log(specialization);
+    });
   }
   onSubmit() {
     console.log('demo');
     console.log(this.search);
-    console.log(this.search.controls['location'].value);
+    console.log(this.search.controls['location'].value.city);
+    this.expertService
+      .filterExperts(
+        this.search.controls['location'].value.city,
+        this.search.controls['location'].value.state,
+        this.search.controls['specialization'].value
+      )
+      .subscribe((experts) => {
+        this.experts = experts;
+      });
   }
 }

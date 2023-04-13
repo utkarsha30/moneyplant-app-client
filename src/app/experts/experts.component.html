@@ -16,6 +16,7 @@
       name="locations"
       class="form-control"
       formControlName="location"
+      placeholder="Select a location"
     >
       <mat-option *ngFor="let location of locations" [value]="location">
         {{ location.city }},{{ location.state }}
