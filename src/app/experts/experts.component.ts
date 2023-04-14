@@ -42,13 +42,13 @@ export class ExpertsComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log(this.search.controls['location'].value);
+    const location = this.search.get('location')?.value;
+    const city = location?.city;
+    const state = location?.state;
+    const specialization = this.search.get('specialization')?.value;
+    // console.log(!specialization);
     this.expertService
-      .filterExperts(
-        this.search.controls['location'].value.city,
-        this.search.controls['location'].value.state,
-        this.search.controls['specialization'].value
-      )
+      .filterExperts(city, state, specialization)
       .subscribe((experts) => {
         this.experts = experts;
       });
