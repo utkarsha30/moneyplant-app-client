@@ -8,9 +8,8 @@ describe('ConnectExpertComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ConnectExpertComponent ]
-    })
-    .compileComponents();
+      declarations: [ConnectExpertComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ConnectExpertComponent);
     component = fixture.componentInstance;

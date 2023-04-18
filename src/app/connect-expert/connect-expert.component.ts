@@ -5,6 +5,7 @@ import { ContactInfo } from '../models/contacts.model';
 import { ExpertData } from '../models/expert.model';
 import { ExpertService } from '../services/expert.service';
 import { MatDialog } from '@angular/material/dialog';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-connect-expert',
   templateUrl: './connect-expert.component.html',
@@ -15,18 +16,41 @@ export class ConnectExpertComponent implements OnInit {
   contactInfo?: ContactInfo;
   updatedData!: ExpertData;
   contactForm!: FormGroup;
-
+  faTimes = faTimes;
+  agree = false;
   constructor(
     private expertService: ExpertService,
     private snackBar: MatSnackBar,
     private matdialog: MatDialog
   ) {}
+  phoneValidator(control: FormControl): { [key: string]: any } | null {
+    const phoneRegex = /^\+\d{2}\s\d{10}$/; // Regex to match phone number format
+
+    if (control.value && !phoneRegex.test(control.value)) {
+      return { invalidPhone: true };
+    }
+
+    return null;
+  }
   ngOnInit(): void {
     this.contactForm = new FormGroup({
-      name: new FormControl(this.contactInfo?.name),
-      emailId: new FormControl(this.contactInfo?.emailId),
-      mobileNo: new FormControl(this.contactInfo?.mobileNo),
-      message: new FormControl(this.contactInfo?.message),
+      name: new FormControl(this.contactInfo?.name, [
+        Validators.required,
+        Validators.maxLength(50),
+      ]),
+      emailId: new FormControl(this.contactInfo?.emailId, [
+        Validators.required,
+        Validators.maxLength(50),
+      ]),
+      mobileNo: new FormControl(this.contactInfo?.mobileNo, [
+        Validators.required,
+        this.phoneValidator,
+      ]),
+      message: new FormControl(this.contactInfo?.message, [
+        Validators.required,
+        Validators.maxLength(500),
+      ]),
+      agree: new FormControl(false, Validators.requiredTrue),
     });
   }
   onSubmit() {
@@ -60,5 +84,8 @@ export class ConnectExpertComponent implements OnInit {
         });
       }
     );
+  }
+  closeWindow() {
+    this.matdialog.closeAll();
   }
 }

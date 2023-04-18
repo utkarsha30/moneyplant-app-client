@@ -1,44 +1,11 @@
 <mat-card class="p-4">
+  <span class="position-absolute top-0 end-0"
+    ><fa-icon [icon]="faTimes" (click)="closeWindow()" class="m-2"></fa-icon
+  ></span>
   <mat-card-header *ngIf="!update">
     <mat-card-title class="header-color">Connect With An Expert</mat-card-title>
   </mat-card-header>
   <mat-card-content *ngIf="!update">
-    <!-- <form
-      class="example-form"
-      [formGroup]="contactForm"
-      (ngSubmit)="onSubmit()"
-    >
-      <mat-form-field class="example-full-width">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Enter your name" formControlName="name" />
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input
-          matInput
-          placeholder="Enter your email"
-          formControlName="emailId"
-        />
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>Mobile No</mat-label>
-        <input
-          matInput
-          placeholder="Enter your mobile no"
-          formControlName="mobileNo"
-        />
-      </mat-form-field>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Message</mat-label>
-        <textarea
-          matInput
-          placeholder="Enter message you want to send .."
-          formControlName="message"
-        ></textarea>
-      </mat-form-field>
-      <button type="submit" class="btn btn-color">Submit</button>
-    </form> -->
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="container">
       <div class="mb-3 row">
         <label for="name" class="form-label label-color">Name</label>
@@ -49,6 +16,20 @@
           placeholder="Enter your name"
           formControlName="name"
         />
+        <div
+          *ngIf="
+            contactForm.get('name')?.invalid &&
+            (contactForm.get('name')?.dirty || contactForm.get('name')?.touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="contactForm.get('name')?.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="contactForm.get('name')?.errors?.['maxlength']">
+            Name must be at max 50 characters long.
+          </div>
+        </div>
       </div>
       <div class="mb-3 row">
         <div class="col">
@@ -60,6 +41,21 @@
             placeholder="Enter your mobile no"
             formControlName="mobileNo"
           />
+          <div
+            *ngIf="
+              contactForm.get('mobileNo')?.invalid &&
+              (contactForm.get('mobileNo')?.dirty ||
+                contactForm.get('mobileNo')?.touched)
+            "
+            class="alert alert-danger"
+          >
+            <div *ngIf="contactForm.get('mobileNo')?.errors?.['required']">
+              Mobile No is required.
+            </div>
+            <div *ngIf="contactForm.get('mobileNo')?.errors?.['invalidPhone']">
+              MobileNo must be in format Eg. +XX XXXXXXXXXX
+            </div>
+          </div>
         </div>
         <div class="col">
           <label for="emailId" class="form-label label-color">Email Id</label>
@@ -70,6 +66,21 @@
             placeholder="Enter your Email Id"
             formControlName="emailId"
           />
+          <div
+            *ngIf="
+              contactForm.get('emailId')?.invalid &&
+              (contactForm.get('emailId')?.dirty ||
+                contactForm.get('emailId')?.touched)
+            "
+            class="alert alert-danger"
+          >
+            <div *ngIf="contactForm.get('emailId')?.errors?.['required']">
+              Email is required.
+            </div>
+            <div *ngIf="contactForm.get('emailId')?.errors?.['maxlength']">
+              Email must be at max 50 characters long.
+            </div>
+          </div>
         </div>
       </div>
       <div class="mb-3 row">
@@ -81,9 +92,29 @@
           placeholder="Enter your message for the expert"
           formControlName="message"
         ></textarea>
+        <div
+          *ngIf="
+            contactForm.get('message')?.invalid &&
+            (contactForm.get('message')?.dirty ||
+              contactForm.get('message')?.touched)
+          "
+          class="alert alert-danger"
+        >
+          <div *ngIf="contactForm.get('message')?.errors?.['required']">
+            Message is required.
+          </div>
+          <div *ngIf="contactForm.get('message')?.errors?.['maxlength']">
+            Message must be at max 500 characters long.
+          </div>
+        </div>
       </div>
       <div class="form-check mb-3">
-        <input class="form-check-input" type="checkbox" id="gridCheck" />
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="gridCheck"
+          formControlName="agree"
+        />
         <label class="form-check-label" for="gridCheck">
           <span class="text-secondary"
             >Receive relavent offers and promotional communication from Money
@@ -93,17 +124,40 @@
             >I agree to Money Controls terms of use</small
           ></label
         >
+        <div
+          *ngIf="
+            contactForm.get('agree')?.errors &&
+            (contactForm.get('agree')?.dirty ||
+              contactForm.get('agree')?.touched)
+          "
+        >
+          <div *ngIf="contactForm.get('agree')?.errors?.['requiredTrue']">
+            You must agree to the terms and conditions
+          </div>
+        </div>
       </div>
       <div class="mb-3">
-        <button type="submit" class="btn btn-color">Submit</button>
+        <button
+          type="submit"
+          class="btn btn-color"
+          [disabled]="!contactForm.valid"
+        >
+          Submit
+        </button>
       </div>
-      <!-- <input type="text" placeholder="name" formControlName="name" />
-      <input type="text" placeholder="email" formControlName="emailId" />
-      <input type="text" placeholder="mobile no" formControlName="mobileNo" />
-      <input type="text" placeholder="message" formControlName="message" />
-     -->
     </form>
   </mat-card-content>
-  <div *ngIf="update">Congratulations</div>
-  <!-- </div> -->
+  <div class="container m-2 p-5" *ngIf="update">
+    <div class="card success-card p-3">
+      <h3 class="text-center">
+        Congratulations !!!<br />
+        Your message has been sent to Consultant {{ updatedData.name }}
+      </h3>
+
+      <small
+        >Thank you for your Message. Our consultant will get back to you in next
+        72 hrs.</small
+      >
+    </div>
+  </div>
 </mat-card>

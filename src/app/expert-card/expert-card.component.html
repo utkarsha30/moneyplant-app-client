@@ -5,17 +5,17 @@
   <mat-card class="w-75">
     <div class="container text-left">
       <div class="row align-items-start">
-        <div class="col text-center">
+        <div class="col-md-4 text-center">
           <img
             [src]="expert.profilepic"
             alt="image"
             width="40%"
             height="40%"
             class="mt-2"
-          />
+          /><br />
           <label class="block m-2 p-2 label-css">{{ expert.bio }}</label>
         </div>
-        <div class="col">
+        <div class="col-md-4">
           <mat-card-header>
             <mat-card-title>{{ expert.name }}</mat-card-title>
             <mat-card-subtitle>{{ expert.specialization }}</mat-card-subtitle>
@@ -32,7 +32,7 @@
             </p>
           </mat-card-content>
         </div>
-        <div class="col">
+        <div class="col-md-4">
           <mat-card-content>
             <p>Fee : {{ expert.fee }}$ / hr</p>
             <br />

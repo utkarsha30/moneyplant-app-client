@@ -21,6 +21,7 @@ export class ExpertsComponent implements OnInit {
   faLocationDot = faLocationDot;
   faMagnifyingGlass = faMagnifyingGlass;
   faMapMarkerAlt = faMapMarkerAlt;
+
   experts: ExpertData[] = []; // declare experts as an array of ExpertData
   expert!: ExpertData;
   search!: FormGroup;
