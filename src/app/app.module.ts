@@ -17,6 +17,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
+import { FooterComponent } from './footer/footer.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     ExpertsComponent,
     ExpertCardComponent,
     ConnectExpertComponent,
+    FooterComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +46,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     FontAwesomeModule,
     MatSelectModule,
     MatAutocompleteModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

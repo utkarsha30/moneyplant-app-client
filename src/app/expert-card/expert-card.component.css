@@ -14,3 +14,10 @@ img {
   width: 60%;
   color: white;
 }
+i {
+  color: rgb(105, 177, 48);
+}
+
+.rating-icons {
+  padding-left: 10px;
+}

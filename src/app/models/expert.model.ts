@@ -2,11 +2,8 @@ export interface ExpertData {
   _id: string;
   name: string;
   email: string;
-  rating: {
-    totalRating: number;
-    totalReviews: number;
-  };
-
+  rating?: number;
+  reviews: number;
   experience: number;
   specialization: string;
   university: string;

@@ -1,5 +1,10 @@
 <app-navbar></app-navbar>
-<form class="container my-5 w-50" [formGroup]="search" (ngSubmit)="onSubmit()">
+<h1 class="text-center mt-5 mb-2">Find Expert</h1>
+<form
+  class="container mx-auto w-50"
+  [formGroup]="search"
+  (ngSubmit)="onSubmit()"
+>
   <div class="input-group">
     <span class="input-group-text"
       ><fa-icon [icon]="faLocationDot"></fa-icon
@@ -45,4 +50,6 @@
   </div>
 </form>
 
-<app-expert-card [experts]="experts"></app-expert-card>
+<app-expert-card [experts]="experts" *ngIf="!loading"></app-expert-card>
+<app-loading *ngIf="loading"></app-loading>
+<app-footer *ngIf="!loading"></app-footer>

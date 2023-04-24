@@ -8,7 +8,9 @@ import {
   faMagnifyingGlass,
   faMapMarkerAlt,
 } from '@fortawesome/free-solid-svg-icons';
+
 import { Observable } from 'rxjs/internal/Observable';
+import { LoadingComponent } from '../loading/loading.component';
 @Component({
   selector: 'app-experts',
   templateUrl: './experts.component.html',
@@ -21,6 +23,7 @@ export class ExpertsComponent implements OnInit {
   faLocationDot = faLocationDot;
   faMagnifyingGlass = faMagnifyingGlass;
   faMapMarkerAlt = faMapMarkerAlt;
+  loading: boolean = false;
 
   experts: ExpertData[] = []; // declare experts as an array of ExpertData
   expert!: ExpertData;
@@ -28,7 +31,9 @@ export class ExpertsComponent implements OnInit {
   constructor(private expertService: ExpertService) {}
   //session.remove
   ngOnInit() {
+    this.loading = true;
     this.expertService.getAllExpertsData().subscribe((experts) => {
+      this.loading = false;
       this.experts = experts;
     });
     this.expertService.getAllLocations().subscribe((locations) => {
@@ -47,10 +52,11 @@ export class ExpertsComponent implements OnInit {
     const city = location?.city;
     const state = location?.state;
     const specialization = this.search.get('specialization')?.value;
-    // console.log(!specialization);
+    this.loading = true;
     this.expertService
       .filterExperts(city, state, specialization)
       .subscribe((experts) => {
+        this.loading = false;
         this.experts = experts;
       });
   }

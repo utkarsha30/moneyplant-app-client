@@ -17,6 +17,7 @@ export class ConnectExpertComponent implements OnInit {
   updatedData!: ExpertData;
   contactForm!: FormGroup;
   faTimes = faTimes;
+  loading: boolean = false;
   agree = false;
   constructor(
     private expertService: ExpertService,
@@ -64,9 +65,10 @@ export class ConnectExpertComponent implements OnInit {
         message: this.contactForm.controls['message'].value,
       },
     };
-
+    this.loading = true;
     this.expertService.connectNow(expertId, data).subscribe(
       (data) => {
+        this.loading = false;
         this.updatedData = data;
         console.log('updatedData', this.updatedData);
         // display success snackbar
