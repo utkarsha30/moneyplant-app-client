@@ -10,13 +10,6 @@
       ><fa-icon [icon]="faLocationDot"></fa-icon
     ></span>
 
-    <!-- <input
-      type="text"
-      class="form-control"
-      placeholder="location"
-      aria-label="Username"
-    /> -->
-
     <mat-select
       name="locations"
       class="form-control"
@@ -27,7 +20,6 @@
         {{ location.city }},{{ location.state }}
       </mat-option>
     </mat-select>
-
     <span class="input-group-text"
       ><fa-icon [icon]="faMagnifyingGlass"></fa-icon
     ></span>
@@ -45,7 +37,6 @@
         {{ suggestion }}
       </mat-option>
     </mat-autocomplete>
-    <!-- <button class="btn btn-outline-secondary" type="submit">Button</button> -->
     <button type="submit" class="btn btn-color">Submit</button>
   </div>
 </form>
