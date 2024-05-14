@@ -5,6 +5,10 @@ Welcome to the Angular Refresher Project! This project was created to refresh my
 ## Functionality
 This is a search page that will serach expertes based on location and specialization.
 
+## Live Project
+
+Check out the live project https://moneyplant-app.onrender.com
+
 # Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
