@@ -5,6 +5,7 @@ Welcome to the Angular Refresher Project! This project was created to refresh my
 ## Live Project
 
 Check out the live project : https://money-plant-app.onrender.com/
+
 Note : Project will take some time to load as it is hosted on free version of hosting platform called render.
 
 ## Functionality
