@@ -2,14 +2,12 @@
 
 Welcome to the Angular Refresher Project! This project was created to refresh my Angular knowledge while working as a Software Engineer. It covers the core concepts of Angular and demonstrates best practices for developing Angular applications.
 
-## Live Project
-
-Check out the live project : https://money-plant-app.onrender.com/
-
-`Note : Project will take some time to load as it is hosted on free version of hosting platform called render.`
-
 ## Functionality
 This is a search page that will serach expertes based on location and specialization.
+
+## Live Project
+
+Check out the live project https://moneyplant-app.onrender.com
 
 # Client
 
