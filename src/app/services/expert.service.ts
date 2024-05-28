@@ -10,6 +10,7 @@ import { LocationData } from '../models/locations.model';
 export class ExpertService {
   constructor(private http: HttpClient) {}
   getAllExpertsData(): Observable<ExpertData[]> {
+    console.log(environment.BASE_URL);
     return this.http.get<ExpertData[]>(environment.BASE_URL + '/api/expert/');
   }
   connectNow(expertId: string, data: object): Observable<ExpertData> {
